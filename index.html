@@ -7,39 +7,71 @@
 </head>
 <body ng-controller="TaskCtrl">
     <div class="header">
-        <header class="searchBar">
-            <div class="searchBar-box">
-                <form>
-                    <input class="search-input" type="search" id="queryByName" value = " 搜索您想要的商品" onfocus="this.value=''" onblur="if(this.value==''){this.value=' 搜索您想要的商品'}" />
-                </form>
-            </div>
-        </header>
-    </div>
-    <ul>
-        <li ng-repeat="item in items" class="article-list-li">
-            <div>
-                <div class="read-count">
-
-                    <img class="read-count-icon" src="images/read_count.png"/>
-                    <p>{{item.age}}</p>
+        <div class="top-header">
+            afadf
+        </div>
+        <header class="article-filter">
+            <form action="">
+                <div class="f-input-box">
+                    <a href=""><img class="f-img-sel" src="images/sort.png" alt=""/></a>
+                    <input type="text" placeholder="请输入搜素关键字"/>
+                    <a href=""></a>
                 </div>
-
-            </div>
-            <div>
-                test
-            </div>
-        </li>
-    </ul>
+            </form>
+        </header>
+        <div class="article-sort">
+            <ul>
+                <li>
+                    <a href="">阅读量<img class="sort-img" src="images/sort.png"/></a>
+                </li><li>
+                <a href="">发布时间</a>
+            </li><li>
+                <a href="">最新更新</a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <div class="body-wrapper">
+        <article class="container">
+            <ul>
+                <li ng-repeat="item in items" class="article-list-li">
+                    <a href="">
+                        <div class="article-a-div">
+                            <div class="article-title-div">
+                                <div class="article-title">
+                                    {{item.title}}}
+                                </div>
+                                <div class="article-other-info">
+                                        <span class="article-readcount">
+                                            阅读 {{item.readAmount}}
+                                        </span>
+                                        <span class="article-postuser">
+                                               {{item.postUser}}
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="article-img-div">
+                                <img class="article-img" src="images/article1.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </article>
+    </div>
+<div class="footer-wrapper">
+    <a href=""><span>查看更多</span><img src="images/load_more.ico"/></a>
+</div>
 </body>
 <script src="./js/angularjs_1.2.5/angular.min.js"></script>
 <script type="application/javascript">
     var app = angular.module('wechatArticle', []);
     app.controller('TaskCtrl', function($scope, $http) {
-        $http.get("http://127.0.0.1:8080/articles?page=1&size=10&title=我")
+        $http.get("http://10.118.1.48:8080/articles?page=1&size=10&title=我")
         .success(function(response) {
             var data = response.result;
             if(response.status == "SUCCESS"){
-                $scope.items = data;
+                $scope.items = data.data;
                 console.log(data);
             }else{
                 alert(data);
