@@ -2,8 +2,10 @@ var articlesService = require("./articlesService");
 function route(pathname,params,callback) {
     if(pathname.toString().endsWith("/articles")||pathname.endsWith("/articles/")){
         var requestParams = requestArticlesParams(params);
+        console.log("1/////////////////////////////////////////////");
         console.log(requestParams);
-        articlesService.getArticlesByParamsAndPage(requestParams.queryParams,requestParams.page,function(callbackResult){
+        console.log("1/////////////////////////////////////////////");
+        articlesService.getArticlesByParamsAndPage(requestParams.queryParams,requestParams.page,requestParams.querySort,function(callbackResult){
            if(callback!=null){
                callback(callbackResult);
                return;
@@ -16,46 +18,46 @@ function route(pathname,params,callback) {
 
 //整理请求参数
 function requestArticlesParams(params){
+    var result = {};
     var page = {
         "page":1,
         "size":10
     };
     var queryParams = null;
+    var querySort = null;
+
     if(params!=null){
         page.page = params.page?page.page:params.page;
         page.size = params.size?page.size:params.size;
-        if(params.title!=null&&params.title!=""){
+        if(params.sort!=null&&params.sort!=""&&params.sort.split(",")){
+            var sort = params.sort.split(",");
+            querySort = {"field":sort[0],"sort":sort[1]};
+        }
+        if(params.keyword!=null&&params.keyword!=""){
             if(queryParams==null){
                 queryParams = new Array();
             }
             queryParams.push({
                 "field":"title",
-                "value":params.title,
+                "value":params.keyword,
+                "operator":"like"
+            });
+            queryParams.push({
+                "field":"summary",
+                "value":params.keyword,
+                "operator":"like"
+            });
+            queryParams.push({
+                "field":"postUser",
+                "value":params.keyword,
                 "operator":"like"
             });
 
         }
-        if(params.summary!=null&&params.summary!=""){
-            if(queryParams==null){
-                queryParams = new Array();
-            }
-            queryParams.push({
-                "field":"summary",
-                "value":params.summary,
-                "operator":"like"
-            });
-        }
-        if(params.postUser!=null&&params.postUser!=""){
-            if(queryParams==null){
-                queryParams = new Array();
-            }
-            queryParams.push({
-                "field":"postUser",
-                "value":params.postUser,
-                "operator":"like"
-            });
-        }
     }
-    return {"page":page,"queryParams":queryParams};
+    console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
+    console.log({"page":page,"queryParams":queryParams,"querySort":querySort});
+    console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
+    return {"page":page,"queryParams":queryParams,"querySort":querySort};
 }
 exports.route = route;

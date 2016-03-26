@@ -14,7 +14,7 @@
             <form action="">
                 <div class="f-input-box">
                     <a href=""><img class="f-img-sel" src="images/sort.png" alt=""/></a>
-                    <input type="text" placeholder="请输入搜素关键字"/>
+                    <input type="text" placeholder="请输入搜素关键字" id="searchKey"/>
                     <a href=""></a>
                 </div>
             </form>
@@ -22,11 +22,11 @@
         <div class="article-sort">
             <ul>
                 <li>
-                    <a href="">阅读量<img class="sort-img" src="images/sort.png"/></a>
+                    <a href="javascript:void(0)" id="readAmountSort">阅读量<img id="readAmountImage" class="sort-img-down" src="images/sort.png"/></a>
                 </li><li>
-                <a href="">发布时间</a>
+                <a href="" id="publishSort">发布时间</a>
             </li><li>
-                <a href="">最新更新</a>
+                <a href="" id="updataSort">最新更新</a>
             </li>
             </ul>
         </div>
@@ -60,23 +60,9 @@
         </article>
     </div>
 <div class="footer-wrapper">
-    <a href=""><span>查看更多</span><img src="images/load_more.ico"/></a>
+    <a href="javascript:void(0)" id="loadMore"><span id="loadMoreText">查看更多</span><img src="images/load_more.ico"/></a>
 </div>
 </body>
 <script src="./js/angularjs_1.2.5/angular.min.js"></script>
-<script type="application/javascript">
-    var app = angular.module('wechatArticle', []);
-    app.controller('TaskCtrl', function($scope, $http) {
-        $http.get("http://10.118.1.48:8080/articles?page=1&size=10&title=我")
-        .success(function(response) {
-            var data = response.result;
-            if(response.status == "SUCCESS"){
-                $scope.items = data.data;
-                console.log(data);
-            }else{
-                alert(data);
-            }
-        });
-    });
-</script>
+<script src="./js/index.js"></script>
 </html>

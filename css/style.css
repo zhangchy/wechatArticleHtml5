@@ -114,13 +114,24 @@ header{
     text-decoration: none;
     color:#696969;
 }
-.sort-img{
+.sort-img-down{
     width: 1rem;
     height: 1rem;
     line-height: 3rem;
     padding-top: 1.5rem;
     position: absolute;
 }
+.sort-img-up{
+    width: 1rem;
+    height: 1rem;
+    line-height: 3rem;
+    padding-top: 1.5rem;
+    position: absolute;
+    -moz-transform:rotate(-180deg);
+    -webkit-transform:rotate(-180deg);
+    transform:rotate(-180deg);
+}
+
 
 article ul{
    margin:0;

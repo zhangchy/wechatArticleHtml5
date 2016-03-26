@@ -42,12 +42,8 @@ function query(sql,callback){
  * @param page
  * @param callback
  */
-function queryByPage(tableName,fields,params,page,callback){
-    console.log("??????????????????????????????????????");
-    console.log(params);
-    console.log("??????????????????????????????????????");
+function queryByPage(tableName,fields,params,page,sort,callback){
     var returnData = {"status":"","result":{"count":"","data":""}};
-
     var con = getConAPI();
     var queryCountSql = "select count(*) cnt from "+tableName+" where 1=1";
     var queryDataSql = "";
@@ -68,11 +64,12 @@ function queryByPage(tableName,fields,params,page,callback){
         });
     }
     queryDataSql = queryDataSql + " limit "+ (page.page-1)*page.size+","+page.size;
-    console.log("sql -------------------------------------");
-
+    if(sort!=null){
+        queryDataSql = queryDataSql+" order by "+sort.field+" "+sort.sort;
+    }
+    console.log("-------------------------------------");
     console.log(queryDataSql);
-    console.log(queryCountSql);
-    console.log("sql -------------------------------------");
+    console.log("-------------------------------------");
     con.query(queryCountSql,function(e,r){
         if(e){
             returnData.status = Constant.STATUS.FAIL;

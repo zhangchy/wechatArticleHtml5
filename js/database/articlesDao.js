@@ -6,9 +6,9 @@ var tables = require("../model/Tables");
  * @param page   分页查询
  * @param size
  */
-exports.findArticlesByParamsAndPage = function(fields,params,page,callback){
+exports.findArticlesByParamsAndPage = function(fields,params,page,sort,callback){
     var tableName = tables.Tables.articles;
-    database.queryByPage(tableName,fields,params,page,function(callbackData){
+    database.queryByPage(tableName,fields,params,page,sort,function(callbackData){
         if(callback!=null){
             callback(callbackData);
         }
