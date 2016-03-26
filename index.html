@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app="wechatArticle">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body ng-controller="TaskCtrl">
+    <div class="header">
+        <header class="searchBar">
+            <div class="searchBar-box">
+                <form>
+                    <input class="search-input" type="search" id="queryByName" value = " 搜索您想要的商品" onfocus="this.value=''" onblur="if(this.value==''){this.value=' 搜索您想要的商品'}" />
+                </form>
+            </div>
+        </header>
+    </div>
+    <ul>
+        <li ng-repeat="item in items" class="article-list-li">
+            <div>
+                <div class="read-count">
+
+                    <img class="read-count-icon" src="images/read_count.png"/>
+                    <p>{{item.age}}</p>
+                </div>
+
+            </div>
+            <div>
+                test
+            </div>
+        </li>
+    </ul>
+</body>
+<script src="./js/angularjs_1.2.5/angular.min.js"></script>
+<script type="application/javascript">
+    var app = angular.module('wechatArticle', []);
+    app.controller('TaskCtrl', function($scope, $http) {
+        $http.get("http://127.0.0.1:8080/articles?page=1&size=10&title=我")
+        .success(function(response) {
+            var data = response.result;
+            if(response.status == "SUCCESS"){
+                $scope.items = data;
+                console.log(data);
+            }else{
+                alert(data);
+            }
+        });
+    });
+</script>
+</html>

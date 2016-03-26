@@ -1,0 +1,23 @@
+{
+  "name": "wechat_article",
+  "version": "0.0.1",
+  "description": "wechat article show ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-cssmin":"*",
+        "grunt-contrib-imagemin":"*",
+        "grunt-contrib-watch": "*",
+        "grunt-contrib-concat":"*"
+   },
+  "keywords": [
+    "article"
+  ],
+  "author": "caihe",
+  "license": "ISC"
+}
