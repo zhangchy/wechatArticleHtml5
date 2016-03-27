@@ -2,31 +2,32 @@
 <html lang="en" ng-app="wechatArticle">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <title>微信文章</title>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body ng-controller="TaskCtrl">
     <div class="header">
         <div class="top-header">
-            afadf
+            微信文章
         </div>
         <header class="article-filter">
             <form action="">
                 <div class="f-input-box">
                     <a href=""><img class="f-img-sel" src="images/sort.png" alt=""/></a>
                     <input type="text" placeholder="请输入搜素关键字" id="searchKey"/>
-                    <a href=""></a>
+                    <a href=""><img class="f-img-search" src="images/search.png" alt=""/></a>
                 </div>
             </form>
         </header>
         <div class="article-sort">
             <ul>
                 <li>
-                    <a href="javascript:void(0)" id="readAmountSort">阅读量<img id="readAmountImage" class="sort-img-down" src="images/sort.png"/></a>
+                    <a href="javascript:void(0)" id="readAmountSort" class="no-click-sort-a">阅读量<span><div id="sort_down_img" class="sort-down-gray"></div><div id="sort_up_img" class="sort-up-gray"></div></span></a>
                 </li><li>
-                <a href="" id="publishSort">发布时间</a>
+                <a href="" id="publishSort"  class="no-click-sort-a">发布时间</a>
             </li><li>
-                <a href="" id="updataSort">最新更新</a>
+                <a href="" id="updateSort"  class="no-click-sort-a">最新更新</a>
             </li>
             </ul>
         </div>
@@ -35,7 +36,7 @@
         <article class="container">
             <ul>
                 <li ng-repeat="item in items" class="article-list-li">
-                    <a href="">
+                    <a href="{{item.href.replace('\'','')}}">
                         <div class="article-a-div">
                             <div class="article-title-div">
                                 <div class="article-title">

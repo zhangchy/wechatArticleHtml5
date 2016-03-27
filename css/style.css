@@ -1,5 +1,5 @@
 html,body{
-    font-size:1.6rem;
+    font-size:1rem;
     background: #f9f9f9;
     font-family: Arial, Helvetica, sans-serif;
     font-size-adjust: none;
@@ -10,8 +10,9 @@ html,body{
     word-break: break-all;
     word-wrap: break-word;
     color: #444;
-    height:100%;
-    overflow-x: hidden;
+    overflow:scroll;
+    overflow-x:hidden;
+    min-height: 100%;
 }
 html,body,div,form,input,textarea{padding:0;margin:0}
 li{
@@ -21,23 +22,26 @@ li{
 /*设置搜索头的样式*/
 header{
     background: #06b04f;
-    height: 3.5rem;
+    height: 2.5rem;
     padding-bottom: 5px;
     margin: 0;
     padding: 0;
     position: relative;
 }
 .top-header{
-    height: 3rem;
+    height: 2rem;
     text-align: center;
     position: relative;
     z-index: 10;
     background: #06b04f;
+    color: white;
+    font-weight: 900;
+    line-height: 2rem;
 }
 .f-input-box{
     margin: 0 .3rem;
     padding:0 .0.3rem;
-    height: 3rem;
+    height: 2rem;
     background: #fff;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -55,84 +59,118 @@ header{
 
 }
 .f-img-sel{
-    background-size: 50px 50px;
-    width: 1rem;
+    width: 0.7rem;
     height: 1rem;
     display: inline-block;
-    content: "";
-    margin: 1rem 0 0 0.8rem;
+    position: absolute;
     border-radius:2px;
-
+    top: 0.7rem;
+    left: 0.7rem;
+}
+.f-img-search{
+    display: inline-block;
+    right: 1.2rem;
+    top: 0.7rem;
+    width:1rem;
+    height:1rem;
+    position: absolute;
+    right: 1rem;
+    /*background: red;
+    width:3rem;
+    height:3rem;
+    display: inline-block;
+    content: "";
+    position: absolute;
+    right: 1.2rem;
+    top: 0.7rem;
+    border-radius:2px;*/
 }
 .f-input-box input{
     vertical-align: top;
-    height: 3rem;
+    height: 2rem;
     margin-left: 2rem;
     padding-left: 1rem;
     margin-top: 0.2rem;
     border: 0;
+    width:75%;
     display: inline-block;
-}
-.f-input-box a:last-child{
-    height: 34px;
-    width: 28px;
-    position: absolute;
-    display: block;
-    right: 0;
-    top: 0;
-}
-.f-input-box a:last-child:after{
-    background: url(../images/ico_add.png) -17px 0 no-repeat;
-    background-size: 50px 50px;
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    content: "";
-    margin: 11px 0 0 10px;
 }
 .article-sort{
     width:100%;
-    height:4rem;
+    height:2.5rem;
     background: #f9f9f9;
     border-bottom: 1px solid #eaeaea;
 }
 .article-sort ul {
      background: #f9f9f9;
      border-bottom: 1px solid #eaeaea;
-     line-height: 4rem;
+     line-height: 2.5rem;
      margin: 0;
      padding: 0;
  }
 .article-sort ul li{
-    width: 20%;
+    width: 33.1%;
     float: left;
+}
+.article-sort ul li:nth-child(1),.article-sort ul li:nth-child(2){
     border-right: 1px solid #eaeaea;
 }
-.article-sort ul li a{
+
+.click-sort-a{
     text-align: center;
     display: block;
     text-decoration: none;
+    color:red;
+    text-decoration: none;
+}
+.no-click-sort-a{
     color:#696969;
+    text-align: center;
+    display: block;
+    text-decoration: none;
 }
-.sort-img-down{
-    width: 1rem;
-    height: 1rem;
-    line-height: 3rem;
-    padding-top: 1.5rem;
-    position: absolute;
+.sort-up-red{
+    width: 0;
+    height: 0;
+    display: inline;
+    top: -1.0rem;
+    left: -0.75rem;
+    position: relative;
+    border-right: 0.4rem solid transparent;
+    border-bottom: 0.4rem solid red;
+    border-left: 0.4rem solid transparent;
 }
-.sort-img-up{
-    width: 1rem;
-    height: 1rem;
-    line-height: 3rem;
-    padding-top: 1.5rem;
-    position: absolute;
-    -moz-transform:rotate(-180deg);
-    -webkit-transform:rotate(-180deg);
-    transform:rotate(-180deg);
+.sort-up-gray{
+    width: 0;
+    height: 0;
+    display: inline;
+    top: -1.0rem;
+    left: -0.75rem;
+    position: relative;
+    border-right: 0.4rem solid transparent;
+    border-bottom: 0.4rem solid #ababab;
+    border-left: 0.4rem solid transparent;
 }
-
-
+.sort-down-red{
+     width: 0;
+     display: inline;
+     height: 0;
+     top: 1.0rem;
+     position: relative;
+     border-right: 0.4rem solid transparent;
+     border-top: 0.4rem solid red;
+     border-left: 0.4rem solid transparent;
+ }
+.sort-down-gray{
+    width: 0;
+    display: inline;
+    height: 0;
+    top: 1.0rem;
+    position: relative;
+    border-right: 0.4rem solid transparent;
+    border-top: 0.4rem solid #ababab;
+    border-left: 0.4rem solid transparent;
+}
 article ul{
    margin:0;
     padding:0;
@@ -154,16 +192,16 @@ article ul li a{
 .article-title{
     line-height: 2rem;
     padding-top: 0.3rem;
-    right: 9rem;
-    left: 1rem;
+    right: 7.5rem;
+    left: 0.7rem;
     position: absolute;
-    color:#383838;
+    color: #383838;
     overflow: hidden;
 }
 .article-img-div{
     display: inline-block;
     float:right;
-    right: 2rem;
+    right: 0.5rem;
     position: absolute;
 }
 .article-title-div{
@@ -174,13 +212,12 @@ article ul li a{
 .article-img{
     width: 7rem;
     height: 7rem;
-    padding-right: 0px;
     padding-top: 0.5rem;
 }
 .article-other-info{
-    font-size: 1.3rem;
-    line-height: 2rem;
-    height: 2rem;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    height: 1.5rem;
     color: #ababab;
     padding: 0 0 12px;
     width: 100%;
@@ -196,7 +233,7 @@ article ul li a{
 .article-postuser{
     position: absolute;
     bottom: 0;
-    right:11rem;
+    right: 9.0rem;
 }
 .footer-wrapper{
     margin: 2rem auto 3rem;

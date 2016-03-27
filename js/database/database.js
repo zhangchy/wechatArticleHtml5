@@ -63,13 +63,12 @@ function queryByPage(tableName,fields,params,page,sort,callback){
             }
         });
     }
-    queryDataSql = queryDataSql + " limit "+ (page.page-1)*page.size+","+page.size;
+
     if(sort!=null){
         queryDataSql = queryDataSql+" order by "+sort.field+" "+sort.sort;
     }
-    console.log("-------------------------------------");
-    console.log(queryDataSql);
-    console.log("-------------------------------------");
+    queryDataSql = queryDataSql + " limit "+ (page.page-1)*page.size+","+page.size;
+
     con.query(queryCountSql,function(e,r){
         if(e){
             returnData.status = Constant.STATUS.FAIL;
