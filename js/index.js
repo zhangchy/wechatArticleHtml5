@@ -57,6 +57,16 @@ app.controller('TaskCtrl', function($scope, $http) {
         var sort = {"field":"last_up","sort":"desc"};
         loadArticles(window.articlePage,window.articleSize,document.getElementById("searchKey").value,$scope,$http,sort);
     }
+
+    //搜索
+    var searchBtn = document.getElementById("searchA");
+    searchBtn.onclick = function(){
+        readAmountSort.className="no-click-sort-a";
+        publishSort.className = "no-click-sort-a";
+        updateSort.className = "no-click-sort-a";
+        items = null;
+        loadArticles(window.articlePage,window.articleSize,document.getElementById("searchKey").value,$scope,$http,null);
+    }
 });
 
 function loadArticles(page,size,key,$scope,$http,sort){
