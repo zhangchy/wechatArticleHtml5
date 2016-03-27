@@ -5,65 +5,49 @@
     <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
     <title>微信文章</title>
     <link rel="stylesheet" href="css/style.css"/>
+
 </head>
-<body ng-controller="TaskCtrl">
-    <div class="header">
-        <div class="top-header">
-            微信文章
-        </div>
-        <header class="article-filter">
-            <form action="">
-                <div class="f-input-box">
-                    <a href=""><img class="f-img-sel" src="images/sort.png" alt=""/></a>
-                    <input type="text" placeholder="请输入搜素关键字" id="searchKey"/>
-                    <a href="javascript:void(0)" id="searchA"><img class="f-img-search" src="images/search.png" alt=""/></a>
-                </div>
-            </form>
-        </header>
-        <div class="article-sort">
-            <ul>
-                <li>
-                    <a href="javascript:void(0)" id="readAmountSort" class="no-click-sort-a">阅读量<span><div id="sort_down_img" class="sort-down-gray"></div><div id="sort_up_img" class="sort-up-gray"></div></span></a>
-                </li><li>
+<body>
+    <div class="top-header">
+        微信文章
+    </div>
+    <header class="article-filter">
+        <form action="">
+            <div class="f-input-box">
+                <a href=""><img class="f-img-sel" src="images/sort.png" alt=""/></a>
+                <input type="text" placeholder="请输入搜素关键字" id="searchKey"/>
+                <a href="javascript:void(0)" id="searchA"><img class="f-img-search" src="images/search.png" alt=""/></a>
+            </div>
+        </form>
+    </header>
+    <div class="article-sort">
+        <ul>
+            <li>
+                <a href="javascript:void(0)" id="readAmountSort" class="no-click-sort-a">阅读量<span><div id="sort_down_img" class="sort-down-gray"></div><div id="sort_up_img" class="sort-up-gray"></div></span></a>
+            </li><li>
                 <a href="" id="publishSort"  class="no-click-sort-a">发布时间</a>
             </li><li>
                 <a href="" id="updateSort"  class="no-click-sort-a">最新更新</a>
             </li>
-            </ul>
-        </div>
+        </ul>
     </div>
-    <div class="body-wrapper">
-        <article class="container">
-            <ul>
-                <li ng-repeat="item in items" class="article-list-li">
-                    <a href="{{item.href.replace('\'','')}}">
-                        <div class="article-a-div">
-                            <div class="article-title-div">
-                                <div class="article-title">
-                                    {{item.title}}}
-                                </div>
-                                <div class="article-other-info">
-                                        <span class="article-readcount">
-                                            阅读 {{item.readAmount}}
-                                        </span>
-                                        <span class="article-postuser">
-                                               {{item.postUser}}
-                                        </span>
-                                </div>
-                            </div>
-                            <div class="article-img-div">
-                                <img class="article-img" src="images/article1.jpg" alt=""/>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+    <div class="body-wrapper" ng-controller="ArticlesController">
+        <article class="container" ng-view>
+
         </article>
     </div>
-<div class="footer-wrapper">
-    <a href="javascript:void(0)" id="loadMore"><span id="loadMoreText">查看更多</span><img src="images/load_more.ico"/></a>
-</div>
+    <div class="footer-wrapper">
+        <a href="javascript:void(0)" id="loadMore"><span id="loadMoreText">查看更多</span><img src="images/load_more.ico"/></a>
+    </div>
 </body>
-<script src="./js/angularjs_1.2.5/angular.min.js"></script>
-<script src="./js/index.js"></script>
+<script src="js/angularjs_1.5.3/angular.min.js"></script>
+<script src="js/angularjs_1.5.3/angular-animate.min.js"></script>
+<script src="js/angularjs_1.5.3/angular-route.min.js"></script>
+<!--<script src="js/angularjs_1.5.3/angular-ui-router.js"></script>-->
+<!--<script src="./js/index.js"></script>-->
+<script src="js/app.js"></script>
+<script src="js/controller.js"></script>
+<!--<script src="js/filters.js"></script>
+<script src="js/services.js"></script>
+<script src="js/directives.js"></script>-->
 </html>
