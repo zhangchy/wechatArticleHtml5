@@ -209,11 +209,7 @@ article ul li a{
     float:left;
     height: 8rem;
 }
-.article-img{
-    width: 7rem;
-    height: 7rem;
-    padding-top: 0.5rem;
-}
+
 .article-other-info{
     font-size: 0.8rem;
     line-height: 1.5rem;
@@ -253,6 +249,7 @@ article ul li a{
     line-height: 3rem;
     text-decoration: none;
 }
+
 
 
 

@@ -62,7 +62,6 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
                 sortUpImg.className = "sort-up-red";
                 $scope.page.sort.sort = "desc";
             }else if(sortUpImg.className == "sort-up-red"&&sortDownImg.className == "sort-down-gray"){
-                console.log("///////////////////////////////");
                 sortDownImg.className = "sort-down-red";
                 sortUpImg.className = "sort-up-gray";
                 $scope.page.sort.sort = "asc";

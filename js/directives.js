@@ -10,6 +10,7 @@ wechatArticle.directive('pagination',function($compile){
                   '</div>',
         link:function($scope, el, attr){
             var index = 1;
+            var imgIndex = 1;
             document.getElementById("loadMore").onclick = function(){
                 $scope.getArticles();
                 var tmplHtml =
