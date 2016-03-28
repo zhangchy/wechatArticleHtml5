@@ -13,6 +13,7 @@ wechatArticle.config(function($routeProvider){
         controller:"ArticlesController"
     });
 });
+
 /*wechatArticle.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider
@@ -31,7 +32,7 @@ wechatArticle.config(function($routeProvider){
             })
             .state('footer',{
                 url: '/footer',
-                templateUrl: '../tpls/footer.html'
+                templateUrl: '../tpls/pagination.html'
             })
             .state('main',{
                 url: '/main',

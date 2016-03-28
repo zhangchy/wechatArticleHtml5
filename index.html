@@ -32,21 +32,22 @@
         </ul>
     </div>
     <div class="body-wrapper" ng-controller="ArticlesController">
-        <article class="container" ng-view>
+        <article class="container" id="articles_list" ng-view="articles">
 
         </article>
+        <pagination></pagination>
     </div>
-    <div class="footer-wrapper">
-        <a href="javascript:void(0)" id="loadMore"><span id="loadMoreText">查看更多</span><img src="images/load_more.ico"/></a>
-    </div>
+
 </body>
 <script src="js/angularjs_1.5.3/angular.min.js"></script>
 <script src="js/angularjs_1.5.3/angular-animate.min.js"></script>
 <script src="js/angularjs_1.5.3/angular-route.min.js"></script>
+<script src="js/jquery/jquery-1.7.1.min.js"></script>
 <!--<script src="js/angularjs_1.5.3/angular-ui-router.js"></script>-->
 <!--<script src="./js/index.js"></script>-->
 <script src="js/app.js"></script>
 <script src="js/controller.js"></script>
+<script src="js/directives.js"></script>
 <!--<script src="js/filters.js"></script>
 <script src="js/services.js"></script>
 <script src="js/directives.js"></script>-->

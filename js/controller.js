@@ -1,53 +1,50 @@
 wechatArticle.controller('ArticlesController', function($scope, $http) {
-    var loadMoreBtn = document.getElementById("loadMore");
-    document.getElementById("loadMoreText").innerHTML = "正在加载";
-
-    $scope.items = new Array();
-    $scope.articlePage = 1;
-    $scope.articleSize = 10;
-    $scope.sort = null;
-
+    var articlePage = 1;
+    var articleSize = 10;
+    var sort = null;
+    var loadIndex = 0;
     //加载数据
-    $scope.load = function(){
-        document.getElementById("loadMoreText").innerHTML = "正在加载";
+    $scope.getArticles = function(){
+        document.getElementById("loadMoreText").innerHTML = "正在加载....败着急";
         var keyword = document.getElementById("searchKey").value;
-        var url = "http://10.118.1.48:8080/articles?page="+ $scope.articlePage+"&size="+ $scope.articleSize+"&keyword="+keyword;
-        if($scope.sort!=null){
-            url = url + "&sort="+$scope.sort.field+","+$scope.sort.sort;
+        var url = "http://10.118.1.48:8080/articles?page="+ articlePage+"&size="+ articleSize+"&keyword="+keyword;
+        if(sort!=null){
+            url = url + "&sort="+sort.field+","+sort.sort;
         }
-        //待优化
+        if(loadIndex == 0){
+            articlePage = 1;
+            articleSize = 10;
+        }
         $http.get(url).success(function(response) {
             var data = response.result;
             if(response.status == "SUCCESS"){
-                if($scope.items==null||$scope.items.length==0){
-                    $scope.items = data.data;
-                }else{
-                    $scope.items = $scope.items.concat(data.data);
-                }
-                window.articlePage = window.articlePage + 1;
+
+                articlePage = articlePage + 1;
                 if(data.count == 0){
                     document.getElementById("loadMore").onclick = null;
                     document.getElementById("loadMoreText").innerHTML = "无搜索记录";
                 }else{
-                    if((window.articlePage-1)*window.articleSize>=data.count){
+                    if((articlePage-1)*articleSize>=data.count){
                         document.getElementById("loadMore").onclick = null;
                         document.getElementById("loadMoreText").innerHTML = "已经到最后";
                     }else{
                         document.getElementById("loadMoreText").innerHTML = "加载更多";
                     }
                 }
-
+                if(loadIndex == 0){
+                    $("#articles_list ul").not(":first").remove();
+                    $scope.articles = data.data;
+                }else if(loadIndex >=1){
+                    var key = "articles"+loadIndex;
+                    $scope[key] = data.data;
+                }
+                loadIndex = loadIndex +1;
             }else{
                 alert(data);
             }
         });
     }
-
-    $scope.load();
-
-    loadMoreBtn.onclick = function(){
-        $scope.load();
-    }
+    $scope.getArticles();
 
     var readAmountSort = document.getElementById("readAmountSort");
     var publishSort = document.getElementById("publishSort");
@@ -59,22 +56,23 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
         readAmountSort.className="click-sort-a";
         publishSort.className = "no-click-sort-a";
         updateSort.className = "no-click-sort-a";
-        $scope.items = null;
-        $scope.sort = {"field":"readAmount","sort":"desc"};
+        $scope.articles = null;
+        loadIndex = 0;
+        sort = {"field":"readAmount","sort":"desc"};
         if(sortUpImg.className == "sort-up-gray"&&sortDownImg.className == "sort-down-gray"){
             sortDownImg.className = "sort-down-red";
             sortUpImg.className = "sort-up-gray";
-            $scope.sort.sort = "asc";
+            sort.sort = "asc";
         }else if(sortUpImg.className == "sort-up-gray"&&sortDownImg.className == "sort-down-red"){
             sortDownImg.className = "sort-down-gray";
             sortUpImg.className = "sort-up-red";
-            $scope.sort.sort = "desc";
+            sort.sort = "desc";
         }else if(sortUpImg.className == "sort-up-red"&&sortDownImg.className == "sort-down-gray"){
             sortDownImg.className = "sort-down-red";
             sortUpImg.className = "sort-up-gray";
-            $scope.sort.sort = "asc";
+            sort.sort = "asc";
         }
-        $scope.load();
+        $scope.getArticles();
     }
 
     publishSort.onclick = function(){
@@ -83,9 +81,10 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
         updateSort.className = "no-click-sort-a";
         sortDownImg.className = "sort-down-gray";
         sortUpImg.className = "sort-up-gray";
-        $scope.items = null;
-        $scope.sort = {"field":"postDate","sort":"desc"};
-        $scope.load();
+        loadIndex = 0;
+        $scope.articles = null;
+        sort = {"field":"postDate","sort":"desc"};
+        $scope.getArticles();
     }
 
     updateSort.onclick = function(){
@@ -94,9 +93,10 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
         updateSort.className = "click-sort-a";
         sortDownImg.className = "sort-down-gray";
         sortUpImg.className = "sort-up-gray";
-        $scope.items = null;
-        $scope.sort = {"field":"last_up","sort":"desc"};
-        $scope.load();
+        $scope.articles = null;
+        loadIndex = 0;
+        sort = {"field":"last_up","sort":"desc"};
+        $scope.getArticles();
     }
 
     //搜索
@@ -107,15 +107,16 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
         updateSort.className = "no-click-sort-a";
         sortDownImg.className = "sort-down-gray";
         sortUpImg.className = "sort-up-gray";
-        $scope.items = null;
-        $scope.sort = null;
-        $scope.load();
+        $scope.articles = null;
+        sort = null;
+        loadIndex = 0;
+        $scope.getArticles();
     }
 
     //表单提交
     var form = document.getElementById("search_form");
     form.submit = function(){
-        $scope.load();
+        $scope.getArticles();
     };
 
 });
