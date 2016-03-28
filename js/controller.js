@@ -9,6 +9,7 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
 
     //加载数据
     $scope.load = function(){
+        document.getElementById("loadMoreText").innerHTML = "正在加载";
         var keyword = document.getElementById("searchKey").value;
         var url = "http://10.118.1.48:8080/articles?page="+ $scope.articlePage+"&size="+ $scope.articleSize+"&keyword="+keyword;
         if($scope.sort!=null){
@@ -24,12 +25,18 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
                     $scope.items = $scope.items.concat(data.data);
                 }
                 window.articlePage = window.articlePage + 1;
-                if((window.articlePage-1)*window.articleSize>=data.count){
+                if(data.count == 0){
                     document.getElementById("loadMore").onclick = null;
-                    document.getElementById("loadMoreText").innerHTML = "已经到最后";
+                    document.getElementById("loadMoreText").innerHTML = "无搜索记录";
                 }else{
-                    document.getElementById("loadMoreText").innerHTML = "加载更多";
+                    if((window.articlePage-1)*window.articleSize>=data.count){
+                        document.getElementById("loadMore").onclick = null;
+                        document.getElementById("loadMoreText").innerHTML = "已经到最后";
+                    }else{
+                        document.getElementById("loadMoreText").innerHTML = "加载更多";
+                    }
                 }
+
             }else{
                 alert(data);
             }
@@ -102,8 +109,13 @@ wechatArticle.controller('ArticlesController', function($scope, $http) {
         sortUpImg.className = "sort-up-gray";
         $scope.items = null;
         $scope.sort = null;
-            $scope.load();
+        $scope.load();
     }
 
+    //表单提交
+    var form = document.getElementById("search_form");
+    form.submit = function(){
+        $scope.load();
+    };
 
 });
