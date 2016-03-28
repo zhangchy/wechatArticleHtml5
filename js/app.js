@@ -13,7 +13,6 @@ wechatArticle.config(function($routeProvider){
         controller:"ArticlesController"
     });
 });
-
 /*wechatArticle.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider
@@ -40,10 +39,3 @@ wechatArticle.config(function($routeProvider){
             })
     }
 ]);*/
-/*app.config(function($stateProvider,$urlRouterProvider){
-    $stateProvider.otherwise("/index");
-    $stateProvider.state('index',{
-        templateUrl:"tpls/articles.html",
-        controller:"ArticlesController"
-    });
-});*/
