@@ -10,7 +10,7 @@ html,body{
     word-break: break-all;
     word-wrap: break-word;
     color: #444;
-    overflow:scroll;
+    overflow:visible;
     overflow-x:hidden;
     min-height: 100%;
 }
