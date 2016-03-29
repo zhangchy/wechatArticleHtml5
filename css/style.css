@@ -28,14 +28,14 @@ header{
     position: relative;
 }
 .top-header{
-    height: 2rem;
+    height: 3rem;
     text-align: center;
     position: relative;
     z-index: 10;
     background: #06b04f;
     color: white;
     font-weight: 900;
-    line-height: 2rem;
+    line-height: 3rem;
 }
 .f-input-box{
     margin: 0 .3rem;
@@ -97,7 +97,7 @@ header{
 .article-sort{
     width:100%;
     height:2.5rem;
-    background: #f9f9f9;
+    background: white;
     border-bottom: 1px solid #eaeaea;
 }
 .article-sort ul {
@@ -186,27 +186,51 @@ article ul li a{
 
 }
 .article-a-div{
-    height:  8rem;
+    height:  5rem;
 }
 .article-title{
-    line-height: 2rem;
-    padding-top: 0.3rem;
-    right: 7.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    padding-top: 0.2rem;
+    right: 6.0rem;
     left: 0.7rem;
     position: absolute;
     color: #383838;
     overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+.article-summary{
+    line-height: 1.6rem;
+    height: 1.6rem;
+    top: 1.7rem;
+    bottom: 1.7rem;
+    right: 6.0rem;
+    font-size: 0.8rem;
+    left: 0.7rem;
+    position: absolute;
+    color: #383838;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space:nowrap;
 }
 .article-img-div{
     display: inline-block;
-    float:right;
-    right: 0.5rem;
-    position: absolute;
+    float: right;
+    /* right: 0.5rem; */
+    padding-right: 0.6rem;
+    padding-top: 0.4685rem;
+    /* position: absolute; */
+}
+.article-img{
+    width: 5.375rem;
+    height: 4.063rem;
 }
 .article-title-div{
     text-align: left;
     float:left;
-    height: 8rem;
+    height: 5rem;
 }
 
 .article-other-info{
@@ -214,11 +238,10 @@ article ul li a{
     line-height: 1.5rem;
     height: 1.5rem;
     color: #ababab;
-    padding: 0 0 12px;
     width: 100%;
     position: absolute;
-    bottom: 0;
-    left:  1rem;
+    bottom: 0.2rem;
+    left: 0.7rem;
 }
 .article-readcount{
      position: absolute;
@@ -228,7 +251,7 @@ article ul li a{
 .article-postuser{
     position: absolute;
     bottom: 0;
-    right: 9.0rem;
+    right: 7.3rem;
 }
 .footer-wrapper{
     margin: 2rem auto 3rem;

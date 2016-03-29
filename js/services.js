@@ -1,23 +1,52 @@
-wechatArticle.service('ArticlesService',function($http){
-    this.getData = function(page,keyword,callback){
-        var url = "http://10.118.1.48:8080/articles?page="+ page.articlePage+"&size="+ page.articleSize+"&keyword="+keyword;
-        if(page.sort!=null){
-            url = url + "&sort="+page.sort.field+","+page.sort.sort;
-        }
-        $http.get(url).success(function(response) {
-            var data = response.result;
-            if(response.status == "SUCCESS"){
-                if(callback!=null){
-                    callback(data);
+wechatArticle.service('ArticlesService',['$http',
+        function(http) {
+            var request = false;
+            var doRequest = function (url, successCallback, failCallback) {
+                if(request){
+                    return;
                 }
-            }else{
-                alert("获取数据失败");
-                console.log(data);
+                request = true;
+                console.log("===========================================");
+                console.log(url);
+                console.log("===========================================");
+                http({
+                    method: 'GET',
+                    url: url
+                }).success(function (response) {
+                    request = false;
+                    if (response.status == "SUCCESS") {
+                        if (successCallback != null) {
+                            successCallback(response.result);
+                        }
+                    } else {
+                        console.log(data);
+                    }
+                }).error(function (data, header, config, status, statusText) {
+                    request = false;
+                    //处理响应失败
+                    console.log(data);
+                    alert(1);
+                   /* if (failCallback != null) {
+                        failCallback(data);
+                    }*/
+
+                });
             }
-        }).error(function(data1,header,config,status){
-            //处理响应失败
-            alert("请求失败");
-            console.log(data1);
-        });
-    }
-});
+            return {
+                getData: function (page, keyword, callback) {
+                    var url = "http://10.118.1.48:8080/articles?page=" + page.articlePage + "&size=" + page.articleSize + "&keyword=" + keyword;
+                    if (page.sort != null) {
+                        url = url + "&sort=" + page.sort.field + "," + page.sort.sort;
+                    }
+                    doRequest(url, function (result) {
+                        if (callback != null) {
+                            callback(result);
+                        }
+                    }, function (error) {
+
+                    });
+                }
+            };
+        }
+    ]
+);

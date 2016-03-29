@@ -53,6 +53,9 @@ function queryByPage(tableName,fields,params,page,sort,callback){
     }
     if(params!=null){
         params.forEach(function(e){
+            if(e.value.indexOf("'")!=-1){
+                e.value.replace("'","\'");
+            }
             if(e.operator == "like"){
                 queryDataSql = queryDataSql + " and "+ e.field+" "+ e.operator + " '%"+ e.value +"%' ";
                 queryCountSql = queryCountSql + " and "+ e.field+" "+ e.operator + " '%"+ e.value +"%' ";
@@ -67,7 +70,9 @@ function queryByPage(tableName,fields,params,page,sort,callback){
         queryDataSql = queryDataSql+" order by "+sort.field+" "+sort.sort;
     }
     queryDataSql = queryDataSql + " limit "+ (page.page-1)*page.size+","+page.size;
-
+    console.log("00000000000000000000000000000000000000000");
+    console.log(queryDataSql);
+    console.log("00000000000000000000000000000000000000000");
     con.query(queryCountSql,function(e,r){
         if(e){
             returnData.status = Constant.STATUS.FAIL;
