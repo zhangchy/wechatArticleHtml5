@@ -20,11 +20,11 @@ wechatArticle.directive('pagination',function($compile){
                                 '<div class="article-a-div">'+
                                     '<div class="article-title-div">'+
                                         '<div class="article-title">'+
-                                        '{{item.title}}}'+
+                                        '{{item.title}}'+
                                         '</div>'+
                                         '<div class="article-other-info">'+
                                             '<span class="article-readcount">'+
-                                                '阅读 {{item.readAmount}}'+
+                                                '阅读 {{item.showReadAmount}}'+
                                             '</span>'+
                                             '<span class="article-postuser">'+
                                                 '{{item.postUser}}'+
@@ -37,7 +37,7 @@ wechatArticle.directive('pagination',function($compile){
                                 '</div>'+
                             '</a>'+
                         '</li>'+
-                    '</ul>';
+                     '</ul>';
                 var el = $compile(tmplHtml)($scope); //重新compile一下，再append
                 $("#articles_list").append(el)
                 index = index + 1;

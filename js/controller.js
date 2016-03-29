@@ -21,7 +21,7 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
                 }
             }
             if($scope.page.articlePage == 1){
-                $("#articles_list ul").not(":first").remove();
+
                 $scope.articles = result.data;
             }else if($scope.page.articlePage >=2){
                 var key = "articles"+($scope.page.articlePage-1);
@@ -36,6 +36,7 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
     //初始化参数
     $scope.initParams = function(){
         $scope.articles = null;
+        $("#articles_list ul").not(":first").remove();
         $scope.page.articlePage = 1;
         $scope.page.articleSize = 10;
         $scope.page.sort = null;
@@ -64,7 +65,7 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
             }else if(sortUpImg.className == "sort-up-red"&&sortDownImg.className == "sort-down-gray"){
                 sortDownImg.className = "sort-down-red";
                 sortUpImg.className = "sort-up-gray";
-                $scope.page.sort.sort = "asc";
+                $scope.page.sort.sort = "desc";
             }
         }else{
             sortUpImg.className = "sort-up-gray";

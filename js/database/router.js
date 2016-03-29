@@ -2,9 +2,9 @@ var articlesService = require("./articlesService");
 function route(pathname,params,callback) {
     if(pathname.toString().endsWith("/articles")||pathname.endsWith("/articles/")){
         var requestParams = requestArticlesParams(params);
-        console.log("1/////////////////////////////////////////////");
+        console.log("=======================请求参数=======================");
         console.log(requestParams);
-        console.log("1/////////////////////////////////////////////");
+        console.log("=======================请求参数=======================");
         articlesService.getArticlesByParamsAndPage(requestParams.queryParams,requestParams.page,requestParams.querySort,function(callbackResult){
            if(callback!=null){
                callback(callbackResult);
@@ -27,8 +27,9 @@ function requestArticlesParams(params){
     var querySort = null;
 
     if(params!=null){
-        page.page = params.page?page.page:params.page;
-        page.size = params.size?page.size:params.size;
+        page.page = params.page?params.page:page.page;
+        page.size = params.size?params.size:page.size;
+
         if(params.sort!=null&&params.sort!=""&&params.sort.split(",")){
             var sort = params.sort.split(",");
             querySort = {"field":sort[0],"sort":sort[1]};
@@ -55,9 +56,7 @@ function requestArticlesParams(params){
 
         }
     }
-    console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
-    console.log({"page":page,"queryParams":queryParams,"querySort":querySort});
-    console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
+
     return {"page":page,"queryParams":queryParams,"querySort":querySort};
 }
 exports.route = route;

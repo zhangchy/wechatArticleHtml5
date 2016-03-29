@@ -8,7 +8,6 @@ function getConAPI(){
         password:Constant.getMysqlConfig().password,
         database:Constant.getMysqlConfig().database
     });
-    console.log(Constant.getMysqlConfig());
     return con;
 }
 /**
