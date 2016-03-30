@@ -36,7 +36,7 @@ wechatArticle.directive('pagination',function($compile){
                                         '{{item.postUser}}'+
                                     '</span>'+
                                     '<span class="article-posterCode">'+
-                                        '{{item.posterCode}}'+
+                                        '{{item.postUser}}'+
                                     '</span>'+
                                 '</div>'+
                             '</div>'+

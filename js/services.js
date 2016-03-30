@@ -26,7 +26,6 @@ wechatArticle.service('ArticlesService',['$http',
                    /* if (failCallback != null) {
                         failCallback(data);
                     }*/
-
                 });
             }
             return {
