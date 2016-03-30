@@ -6,9 +6,6 @@ wechatArticle.service('ArticlesService',['$http',
                     return;
                 }
                 request = true;
-                console.log("===========================================");
-                console.log(url);
-                console.log("===========================================");
                 http({
                     method: 'GET',
                     url: url

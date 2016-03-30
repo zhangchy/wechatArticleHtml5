@@ -1,7 +1,7 @@
 html,body{
     font-size:1rem;
     background: #f9f9f9;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: arial,'pingfang sc',stheiti,"microsoft yahei",sans-serif;
     font-size-adjust: none;
     -webkit-text-size-adjust: none;
     -moz-text-size-adjust: none;
@@ -17,6 +17,9 @@ html,body,div,form,input,textarea{padding:0;margin:0}
 li{
     list-style-type: none;
     display: inline-block;
+}
+a{
+    text-decoration: none;
 }
 /*设置搜索头的样式*/
 header{
@@ -186,72 +189,79 @@ article ul li a{
 
 }
 .article-a-div{
-    height:  5rem;
+    min-height:  8rem;
 }
 .article-title{
-    height: 1.5rem;
     line-height: 1.5rem;
-    padding-top: 0.2rem;
-    right: 6.0rem;
-    left: 0.7rem;
-    position: absolute;
+    padding-left: 0.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.3rem;
+    padding-right: 0.5rem;
+    text-decoration: none;
+    /* right: 6.0rem; */
+    /* left: 0.7rem; */
+    /* position: relative; */
     color: #383838;
     overflow: hidden;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     font-weight: bold;
+    word-break: break-word;
 }
 .article-summary{
     line-height: 1.6rem;
-    height: 1.6rem;
     top: 1.7rem;
+    height: auto;
+    min-height: 4.063rem;
     bottom: 1.7rem;
     right: 6.0rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     left: 0.7rem;
-    position: absolute;
+    /* position: absolute; */
     color: #383838;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
-    white-space:nowrap;
+    white-space: pre;
 }
 .article-img-div{
-    display: inline-block;
     float: right;
-    /* right: 0.5rem; */
-    padding-right: 0.6rem;
-    padding-top: 0.4685rem;
-    /* position: absolute; */
+    padding-right: 0.5rem;
 }
 .article-img{
     width: 5.375rem;
     height: 4.063rem;
 }
 .article-title-div{
-    text-align: left;
-    float:left;
-    height: 5rem;
+    padding-right: 6.2rem;
+    padding-left: 0.5rem;
 }
 
 .article-other-info{
     font-size: 0.8rem;
-    line-height: 1.5rem;
-    height: 1.5rem;
+    line-height: 3rem;
+    height: 3rem;
     color: #ababab;
-    width: 100%;
-    position: absolute;
-    bottom: 0.2rem;
-    left: 0.7rem;
 }
 .article-readcount{
-     position: absolute;
+     /*position: absolute;
      bottom: 0;
-     left: 0;
+     left: 0;*/
  }
 .article-postuser{
     position: absolute;
-    bottom: 0;
+    /* bottom: 0; */
     right: 7.3rem;
+}
+.article-posterCode{
+    position: absolute;
+    right: 0.5rem;
+    /* left: 0.5rem; */
+    width: 5.875rem;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color:#229d44
 }
 .footer-wrapper{
     margin: 2rem auto 3rem;

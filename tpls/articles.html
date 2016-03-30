@@ -1,27 +1,28 @@
 <ul>
     <li ng-repeat="item in articles"class="article-list-li">
         <a href="{{item.href}}">
-            <div class="article-a-div">
-                <div class="article-title-div">
-                    <div class="article-title">
-                    {{item.title}}
-                    </div>
-                    <div class="article-summary">
-                        {{item.summary}}
-                    </div>
-                    <div class="article-other-info">
-                        <span class="article-readcount">
-                            阅读 {{item.showReadAmount}}
-                        </span>
-                        <span class="article-postuser">
-                           {{item.postUser}}
-                        </span>
-                    </div>
-                </div>
-                <div class="article-img-div">
-                    <img class="article-img" src="images/article1.jpg" alt=""/>
-                </div>
-            </div>
+            <div class="article-title">{{item.title}}</div>
         </a>
+        <div class="article-img-div">
+            <a href="{{item.href}}">
+                <img class="article-img" src="images/link.jpg" alt=""/>
+            </a>
+        </div>
+        <div class="article-title-div">
+            <a href="{{item.href}}">
+                <div class="article-summary">{{item.summary}}</div>
+            </a>
+            <div class="article-other-info">
+                <span class="article-readcount">
+                    阅读 {{item.showReadAmount}}
+                </span>
+                <span class="article-postuser">
+                   {{item.postUser}}
+                </span>
+                <span class="article-posterCode">
+                   {{item.posterCode}}
+                </span>
+            </div>
+        </div>
     </li>
 </ul>
