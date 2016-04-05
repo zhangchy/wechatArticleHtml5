@@ -10,12 +10,11 @@ wechatArticle.directive('pagination',function($compile){
                   '</div>',
         link:function($scope, el, attr){
             var index = 1;
-            var imgIndex = 1;
             document.getElementById("loadMore").onclick = function(){
                 $scope.getArticles();
                 var tmplHtml =
                      '<ul>'+
-                        '<li ng-repeat="item in articles"class="article-list-li">'+
+                        '<li ng-repeat="item in articles'+index+'" class="article-list-li">'+
                             '<a href="{{item.href}}">'+
                                 '<div class="article-title">{{item.title}}</div>'+
                             '</a>'+

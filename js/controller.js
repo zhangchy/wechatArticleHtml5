@@ -21,12 +21,12 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
                 }
             }
             if($scope.page.articlePage == 1){
-
                 $scope.articles = result.data;
             }else if($scope.page.articlePage >=2){
                 var key = "articles"+($scope.page.articlePage-1);
                 $scope[key] = result.data;
             }
+
             $scope.page.articlePage = $scope.page.articlePage +1;
         });
     }

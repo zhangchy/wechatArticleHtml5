@@ -56,13 +56,19 @@ function queryByPage(tableName,fields,params,page,sort,callback){
             if(e.value.indexOf("'")!=-1){
                 e.value.replace("'","\'");
             }
-            if(e.operator == "like"){
-                queryDataSql = queryDataSql + " and "+ e.field+" "+ e.operator + " '%"+ e.value +"%' ";
-                queryCountSql = queryCountSql + " and "+ e.field+" "+ e.operator + " '%"+ e.value +"%' ";
+            if(e.field == 'keyword'){
+                queryDataSql = queryDataSql + " and (title like '%"+ e.value +"%' or summary like '%"+ e.value +"%' or postUser like '%"+ e.value +"%')";
+                queryCountSql = queryCountSql + " and (title like '%"+ e.value +"%' or summary like '%"+ e.value +"%' or postUser like '%"+ e.value +"%')";
             }else{
-                queryDataSql = queryDataSql + " and "+ e.field+" "+ e.operator + " "+ e.value;
-                queryCountSql = queryCountSql + " and "+ e.field+" "+ e.operator + " "+ e.value;
+                if(e.operator == "like"){
+                    queryDataSql = queryDataSql + " and "+ e.field+" "+ e.operator + " '%"+ e.value +"%' ";
+                    queryCountSql = queryCountSql + " and "+ e.field+" "+ e.operator + " '%"+ e.value +"%' ";
+                }else{
+                    queryDataSql = queryDataSql + " and "+ e.field+" "+ e.operator + " "+ e.value;
+                    queryCountSql = queryCountSql + " and "+ e.field+" "+ e.operator + " "+ e.value;
+                }
             }
+
         });
     }
 

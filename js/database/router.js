@@ -39,17 +39,7 @@ function requestArticlesParams(params){
                 queryParams = new Array();
             }
             queryParams.push({
-                "field":"title",
-                "value":params.keyword,
-                "operator":"like"
-            });
-            queryParams.push({
-                "field":"summary",
-                "value":params.keyword,
-                "operator":"like"
-            });
-            queryParams.push({
-                "field":"postUser",
+                "field":"keyword",
                 "value":params.keyword,
                 "operator":"like"
             });
