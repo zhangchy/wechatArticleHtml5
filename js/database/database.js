@@ -1,6 +1,6 @@
 //nodejs中引入mysql插件
 var mysql  = require('mysql');
-var Constant = require("../model/Constant");
+var Constant = require("../common/Constant");
 function getConAPI(){
     var con = mysql.createConnection({
         host:Constant.getMysqlConfig().host,

@@ -1,5 +1,5 @@
 var database = require("./database");
-var tables = require("../model/Tables");
+var tables = require("../common/Tables");
 /**
  *
  * @param params QueryParam类型查询条件此处

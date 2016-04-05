@@ -1,14 +1,15 @@
 //标签指令
-wechatArticle.directive('pagination',function($compile){
+wechatArticle.directive('pagination',['$compile',function($compile){
+    var contentUrl;
     return{
         restrict:"AEMC",
-        /*replace: true,
-        templateUrl: "../tpls/pagination.html",*/
-        scope:true,
-        template: '<div class="footer-wrapper">'+
+        templateUrl: "../tpls/pagination.html",
+        /*scope:{},*/
+        /*template: '<div class="footer-wrapper">'+
                         '<a href="javascript:void(0)" id="loadMore"><span id="loadMoreText">查看更多</span><img src="images/load_more.ico"/></a>'+
-                  '</div>',
+                  '</div>',*/
         link:function($scope, el, attr){
+            $scope.getArticles();
             var index = 1;
             document.getElementById("loadMore").onclick = function(){
                 $scope.getArticles();
@@ -42,9 +43,9 @@ wechatArticle.directive('pagination',function($compile){
                         '</li>'+
                     '</ul>';
                 var el = $compile(tmplHtml)($scope); //重新compile一下，再append
-                $("#articles_list").append(el)
+                $("#articles_list").append(el);
                 index = index + 1;
             };
         }
     }
-});
+}]);

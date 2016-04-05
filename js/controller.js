@@ -1,4 +1,4 @@
-wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesService) {
+wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesService',function($scope, $http,ArticlesService) {
     $scope.page={
         articlePage:1,
         articleSize:10,
@@ -26,12 +26,11 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
                 var key = "articles"+($scope.page.articlePage-1);
                 $scope[key] = result.data;
             }
-
             $scope.page.articlePage = $scope.page.articlePage +1;
         });
     }
 
-    $scope.getArticles();
+
 
     //初始化参数
     $scope.initParams = function(){
@@ -109,4 +108,4 @@ wechatArticle.controller('ArticlesController', function($scope, $http,ArticlesSe
         $scope.getArticles();
     };
 
-});
+}]);

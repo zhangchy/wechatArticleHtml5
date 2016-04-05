@@ -5,7 +5,7 @@ var path = require('path');
 
 var router = require("./js/database/router");
 
-var Constant = require("./js/model/Constant");
+var Constant = require("./js/common/Constant");
 
 //配置
 var config = Constant.getServerConfig();
@@ -15,6 +15,7 @@ http.createServer(processRequestRoute).listen(config.port);
 
 //路由URL
 function processRequestRoute(request, response) {
+
     var pathname = url.parse(request.url).pathname;
     if (pathname === '/') {
         pathname = "/index.html"; //默认页面
