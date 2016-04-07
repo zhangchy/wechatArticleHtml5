@@ -51,7 +51,6 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
         if(sortId!=null){
             document.getElementById(sortId).className = "click-sort-a";
         }
-
         if(sortId!=null&&sortId =="readAmountSort"){
             if(sortUpImg.className == "sort-up-gray"&&sortDownImg.className == "sort-down-gray"){
                 sortUpImg.className = "sort-up-red";
@@ -60,7 +59,7 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
             }else if(sortUpImg.className == "sort-up-gray"&&sortDownImg.className == "sort-down-red"){
                 sortDownImg.className = "sort-down-gray";
                 sortUpImg.className = "sort-up-red";
-                $scope.page.sort.sort = "desc";
+                $scope.page.sort.sort = "asc";
             }else if(sortUpImg.className == "sort-up-red"&&sortDownImg.className == "sort-down-gray"){
                 sortDownImg.className = "sort-down-red";
                 sortUpImg.className = "sort-up-gray";

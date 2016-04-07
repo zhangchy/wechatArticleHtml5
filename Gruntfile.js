@@ -38,23 +38,9 @@ module.exports = function(grunt){
 				banner:"/* 这个文件 <%= pkg.name %><%= pkg.version%> \n*/"
 			},
 			build:{
-                /*files: [
-                    {
-                        "dest/app.min.js": ['js/app.js']
-                    },
-                    {
-                        "dest/controller.min.js": ['js/controller.js']
-                    },
-                    {
-                        "dest/directives.min.js": ['js/directives.js']
-                    },
-                    {
-                        "dest/services.min.js": ['js/services.js']
-                    }
-                ]*/
                 files: [
                     {
-                        "dest/index.min.js": ['dest/app.min.js','dest/controller.min.js','dest/directive.min.js','dest/services.min.js']
+                        "dest/index.min.js": ['js/angularjs_1.5.3/angular.min.js','js/angularjs_1.5.3/angular-route.min.js','js/jquery/jquery-1.7.1.min.js','js/app.js','js/controller.js','js/directives.js','js/services.js']
                     }
                 ]
 			}
@@ -66,18 +52,11 @@ module.exports = function(grunt){
 				banner:"/* 这个文件 <%= pkg.name %><%= pkg.version%> 合并的js\n*/"
 			},
 			build:{
-				//被压缩的文件的路径
-				src: [
-                    "./js/angularjs_1.5.3/angular.min.js",
-                    "./js/angularjs_1.5.3/angular-route.min.js",
-                    "./js/jquery/jquery-1.7.1.min.js",
-                    "./dest/app.min.js",
-                    "./dest/controller.min.js",
-                    "./dest/directives.min.js",
-                    "./dest/services.min.js"
-                ],
-				//被压缩后的文件路径
-				dest:"dest/index.min.js"
+                files: [
+                    {
+                        "dest/index.min.js": ['dest/app.min.js','dest/controller.min.js','dest/directive.min.js','dest/services.min.js']
+                    }
+                ]
 			}
 		},
 		jshint: {
@@ -86,8 +65,8 @@ module.exports = function(grunt){
       		}
     	},
 	    watch: {
-	      files: ['src/*.html','src/*.css'],
-	      tasks: ['jshint']
+	      files: ['js/*.js'],
+	      tasks: ['uglify']
 	    }
 	});
 	//加载插件
@@ -99,5 +78,5 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     //默认执行任务
-	grunt.registerTask("default",["uglify","concat","jshint",'watch','cssmin','imagemin']);
+	grunt.registerTask("default",["uglify"]);
 };
