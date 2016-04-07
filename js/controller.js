@@ -27,6 +27,9 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
                 $scope[key] = result.data;
             }
             $scope.page.articlePage = $scope.page.articlePage +1;
+        },function(error){
+            document.getElementById("loadMore").onclick = null;
+            document.getElementById("loadMoreText").innerHTML = "请求超时";
         });
     }
 

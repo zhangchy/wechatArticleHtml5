@@ -9,6 +9,10 @@ var Constant = require("./js/common/Constant");
 
 //配置
 var config = Constant.getServerConfig();
+var timeout = {
+    request_timeout : null,
+    request_finish : false
+}
 //开始HTTP服务器
 http.createServer(processRequestRoute).listen(config.port);
 
@@ -77,10 +81,11 @@ function processRequestRoute(request, response) {
                 try {
                     var handler = require(localPath);
                     if (handler.processRequest && typeof handler.processRequest === 'function') {
+                        //clearTimeout(request_timer);
+                        handler.processRequest(request, response); //动态资源
 
-                         handler.processRequest(request, response); //动态资源
+
                         //server.start(router.route);
-
                     } else {
                         response.writeHead(404, { 'Content-Type': 'text/plain' });
                         response.end('404:Handle Not found');

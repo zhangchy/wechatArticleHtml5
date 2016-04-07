@@ -8,38 +8,46 @@ wechatArticle.service('ArticlesService',['$http',
                 request = true;
                 http({
                     method: 'GET',
-                    url: url
+                    url: url,
+                    timeout: 10000
                 }).success(function (response) {
                     request = false;
                     if (response.status == "SUCCESS") {
                         if (successCallback != null) {
                             successCallback(response.result);
                         }
-                    } else {
-                        console.log(data);
                     }
-                }).error(function (data, header, config, status, statusText) {
+                }).error(function (data,status,headers,config) {
                     request = false;
-                    //处理响应失败
-                    console.log(data);
-                    alert(1);
+                    if(status == -1){
+                        if (failCallback != null) {
+                            failCallback("请求超时,请检查网络");
+                        }
+                    }else{
+                        //处理响应失败
+                        if (failCallback != null) {
+                            failCallback("系统异常");
+                        }
                    /* if (failCallback != null) {
                         failCallback(data);
                     }*/
+                    }
                 });
             }
             return {
-                getData: function (page, keyword, callback) {
+                getData: function (page, keyword, successCallback,failCallback) {
                     var url = "http://10.118.1.48:8080/articles?page=" + page.articlePage + "&size=" + page.articleSize + "&keyword=" + keyword;
                     if (page.sort != null) {
                         url = url + "&sort=" + page.sort.field + "," + page.sort.sort;
                     }
                     doRequest(url, function (result) {
-                        if (callback != null) {
-                            callback(result);
+                        if (successCallback != null) {
+                            successCallback(result);
                         }
                     }, function (error) {
-
+                        if(failCallback!=null){
+                            failCallback(error);
+                        }
                     });
                 }
             };
