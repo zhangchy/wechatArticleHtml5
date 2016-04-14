@@ -54,7 +54,7 @@ function queryByPage(tableName,fields,params,page,sort,callback){
     if(params!=null){
         params.forEach(function(e){
             if(e.value.indexOf("'")!=-1){
-                e.value.replace("'","\'");
+                e.value=e.value.replace(/'/g,"\\"+"'");
             }
             if(e.field == 'keyword'){
                 queryDataSql = queryDataSql + " and (title like '%"+ e.value +"%' or summary like '%"+ e.value +"%' or postUser like '%"+ e.value +"%')";
