@@ -21,6 +21,20 @@ li{
 a{
     text-decoration: none;
 }
+.header-wrapper{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    background-color: #ccc;
+    z-index: 1;
+}
+.body-wrapper{
+    margin-top: 8rem;
+    overflow: hidden;
+    z-index: 2;
+}
 /*设置搜索头的样式*/
 header{
     background: #06b04f;
