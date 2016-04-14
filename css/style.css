@@ -288,6 +288,17 @@ article ul li a{
     text-decoration: none;
 }
 
+.stick-div{
+    position: fixed;
+    bottom: 2rem;
+    right: 1rem;
+    z-index: 1;
+}
+.stick-div img{
+    width: 3rem;
+    height: 3em;
+}
+
 
 
 

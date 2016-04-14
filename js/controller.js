@@ -122,4 +122,13 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
         $scope.getArticles();
     };
 
+    //回到顶部效果
+    var obj = document.getElementById("stick");
+    window.onscroll = function() {
+        obj.style.display = (document.body.scrollTop >= window.screen.availHeight*3) ? "block" : "none";
+    }
+    obj.onclick = function(){
+        $('html, body').animate({scrollTop: 0}, 1000);
+    }
 }]);
+
