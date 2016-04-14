@@ -1,4 +1,5 @@
 wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesService',function($scope, $http,ArticlesService) {
+    $scope.hassearch = false;
     $scope.page={
         articlePage:1,
         articleSize:10,
@@ -27,7 +28,9 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
                 $scope[key] = result.data;
             }
             $scope.page.articlePage = $scope.page.articlePage +1;
+            $scope.hassearch = false;
         },function(error){
+            $scope.hassearch = false;
             document.getElementById("loadMoreText").innerHTML = "请求超时";
         });
     }
@@ -36,6 +39,7 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
 
     //初始化参数
     $scope.initParams = function(){
+        $scope.hassearch = true;
         $scope.articles = null;
         $("#articles_list ul").not(":first").remove();
         $scope.page.articlePage = 1;
@@ -75,32 +79,41 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
 
     //阅读量排序
     readAmountSort.onclick = function(){
-        $scope.initParams();
-        $scope.page.sort = {"field":"readAmount","sort":"desc"};
-        $scope.sortSelect("readAmountSort");
-        $scope.getArticles();
+        if(!$scope.hassearch){
+            $scope.initParams();
+            $scope.page.sort = {"field":"readAmount","sort":"desc"};
+            $scope.sortSelect("readAmountSort");
+            $scope.getArticles();
+        }
     }
     //发布时间排序
     publishSort.onclick = function(){
-        $scope.initParams();
-        $scope.page.sort = {"field":"postDate","sort":"desc"};
-        $scope.sortSelect("publishSort");
-        $scope.getArticles();
+        if(!$scope.hassearch){
+            $scope.initParams();
+            $scope.page.sort = {"field":"postDate","sort":"desc"};
+            $scope.sortSelect("publishSort");
+            $scope.getArticles();
+        }
     }
+
     //更新时间排序
     updateSort.onclick = function(){
-        $scope.initParams();
-        $scope.page.sort = {"field":"last_up","sort":"desc"};
-        $scope.sortSelect("updateSort");
-        $scope.getArticles();
+        if(!$scope.hassearch){
+            $scope.initParams();
+            $scope.page.sort = {"field":"last_up","sort":"desc"};
+            $scope.sortSelect("updateSort");
+            $scope.getArticles();
+        }
     }
 
     //搜索
     var searchBtn = document.getElementById("searchA");
     searchBtn.onclick = function(){
-        $scope.initParams();
-        $scope.sortSelect(null);
-        $scope.getArticles();
+        if(!$scope.hassearch){
+            $scope.initParams();
+            $scope.sortSelect(null);
+            $scope.getArticles();
+        }
     }
 
     //表单提交
