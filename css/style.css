@@ -253,7 +253,6 @@ article ul li a{
     color:#229d44
 }
 .footer-wrapper{
-    margin: 2rem auto 3rem;
     text-align: center;
 }
 .footer-wrapper a{
@@ -263,8 +262,12 @@ article ul li a{
     display: block;
     height: 3rem;
     border: 1px solid #ddd;
-    margin: 1rem 1rem 1rem;
+    margin: 1rem 0.5rem 1rem;
     text-decoration: none;
+
+    border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
 }
 .footer-wrapper a span{
     line-height: 3rem;
