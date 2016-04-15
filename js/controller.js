@@ -5,10 +5,11 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
         articleSize:10,
         sort:null
     }
+    $scope.searchKeyWord = "";
     //加载数据
     $scope.getArticles = function(){
         document.getElementById("loadMoreText").innerHTML = "正在加载....败着急";
-        var keyword = document.getElementById("searchKey").value;
+        var keyword = $scope.searchKeyWord;
         ArticlesService.getData($scope.page,keyword,function(result){
             if(result.count == 0){
                 document.getElementById("loadMore").onclick = null;
@@ -112,6 +113,7 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
         if(!$scope.hassearch){
             $scope.initParams();
             $scope.sortSelect(null);
+            $scope.searchKeyWord = document.getElementById("searchKey").value;
             $scope.getArticles();
         }
     }

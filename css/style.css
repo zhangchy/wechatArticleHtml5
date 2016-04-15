@@ -21,6 +21,9 @@ li{
 a{
     text-decoration: none;
 }
+img{
+    border:0
+}
 .header-wrapper{
     position: fixed;
     width: 100%;
@@ -106,7 +109,6 @@ header{
     height: 2rem;
     margin-left: 2rem;
     padding-left: 1rem;
-    margin-top: 0.2rem;
     border: 0;
     width:75%;
     display: inline-block;
@@ -145,12 +147,14 @@ header{
     display: block;
     text-decoration: none;
 }
+#readAmountSort span{
+    position: absolute;
+}
 .sort-up-red{
     width: 0;
     height: 0;
-    display: inline;
-    top: -1.0rem;
-    left: -0.75rem;
+    top: 0.83rem;
+    left: 0.4rem;
     position: relative;
     border-right: 0.4rem solid transparent;
     border-bottom: 0.4rem solid red;
@@ -159,9 +163,8 @@ header{
 .sort-up-gray{
     width: 0;
     height: 0;
-    display: inline;
-    top: -1.0rem;
-    left: -0.75rem;
+    top: 0.83rem;
+    left: 0.4rem;
     position: relative;
     border-right: 0.4rem solid transparent;
     border-bottom: 0.4rem solid #ababab;
@@ -171,7 +174,8 @@ header{
      width: 0;
      display: inline;
      height: 0;
-     top: 1.0rem;
+     top: 0.7rem;
+     left:0.4rem;
      position: relative;
      border-right: 0.4rem solid transparent;
      border-top: 0.4rem solid red;
@@ -181,7 +185,8 @@ header{
     width: 0;
     display: inline;
     height: 0;
-    top: 1.0rem;
+    top: 0.7rem;
+    left:0.4rem;
     position: relative;
     border-right: 0.4rem solid transparent;
     border-top: 0.4rem solid #ababab;
