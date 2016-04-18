@@ -60,7 +60,7 @@ function processRequestRoute(request, response) {
     if(config.databasePaths && config.databasePaths.length>0){
 
         for(var j  = 0;j<config.databasePaths.length;j++){
-            if(pathname&&pathname.endsWith(config.databasePaths[j])){
+            if(pathname&&pathname.indexOf(config.databasePaths[j], pathname.length - config.databasePaths[j].length) !== -1){
                 databaseUrl = true;
             }
         }

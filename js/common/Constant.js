@@ -4,15 +4,15 @@ exports.STATUS={
 };
 function getMysqlConfig(){
     return {
-        "host":"10.118.1.138",
+        "host":"10.8.100.202",
         "user":"root",
-        "password":"ouer@2015",
+        "password":"",
         "database":"weixin_sogou"
     };
 }
 function getServerConfig(){
     return {
-        "port":"8080",
+        "port":"8888",
         "denyAccess":["./httpserver.js", "./src/requirecache.js"],
         "localIPs":["127.0.0.1"],
         "srcpath":"/src",

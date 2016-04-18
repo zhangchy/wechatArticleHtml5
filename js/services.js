@@ -1,4 +1,4 @@
-wechatArticle.service('ArticlesService',['$http',
+﻿wechatArticle.service('ArticlesService',['$http',
         function(http) {
             var request = false;
             var doRequest = function (url, successCallback, failCallback) {
@@ -36,7 +36,7 @@ wechatArticle.service('ArticlesService',['$http',
             }
             return {
                 getData: function (page, keyword, successCallback,failCallback) {
-                    var url = "http://10.118.1.48:8080/articles?page=" + page.articlePage + "&size=" + page.articleSize + "&keyword=" + keyword;
+                    var url = "http://"+window.location.host+"/articles?page=" + page.articlePage + "&size=" + page.articleSize + "&keyword=" + keyword;
                     if (page.sort != null) {
                         url = url + "&sort=" + page.sort.field + "," + page.sort.sort;
                     }

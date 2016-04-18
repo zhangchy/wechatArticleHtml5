@@ -1,15 +1,15 @@
 var articlesService = require("./articlesService");
 function route(pathname,params,callback) {
-    if(pathname.toString().endsWith("/articles")||pathname.endsWith("/articles/")){
+    if((pathname.toString().indexOf("/articles", pathname.length - "/articles".length) !== -1)||(pathname.toString().indexOf("/articles/", pathname.length - "/articles/".length) !== -1)){
         var requestParams = requestArticlesParams(params);
         console.log("=======================请求参数=======================");
         console.log(requestParams);
         console.log("=======================请求参数=======================");
         articlesService.getArticlesByParamsAndPage(requestParams.queryParams,requestParams.page,requestParams.querySort,function(callbackResult){
-           if(callback!=null){
-               callback(callbackResult);
-               return;
-           }
+            if(callback!=null){
+                callback(callbackResult);
+                return;
+            }
         });
     }else{
         return "cannot get users the url is not correct";
