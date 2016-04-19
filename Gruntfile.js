@@ -10,7 +10,7 @@ module.exports = function(grunt){
             },
             "compress": {
                 "files": {
-                    "dest/style.css": [
+                    "dest/css/style.css": [
                         "css/style.css"
                     ]
                 }
@@ -40,21 +40,7 @@ module.exports = function(grunt){
 			build:{
                 files: [
                     {
-                        "dest/index.min.js": ['js/angularjs_1.5.3/angular.min.js','js/angularjs_1.5.3/angular-route.min.js','js/jquery/jquery-1.7.1.min.js','js/app.js','js/controller.js','js/directives.js','js/services.js']
-                    }
-                ]
-			}
-		},
-		//合并
-		concat:{
-			options:{
-				//加注释
-				banner:"/* 这个文件 <%= pkg.name %><%= pkg.version%> 合并的js\n*/"
-			},
-			build:{
-                files: [
-                    {
-                        "dest/index.min.js": ['dest/app.min.js','dest/controller.min.js','dest/directive.min.js','dest/services.min.js']
+                        "dest/js/index.min.js": ['js/angularjs_1.5.3/angular.min.js','js/angularjs_1.5.3/angular-route.min.js','js/jquery/jquery-1.7.1.min.js','js/app.js','js/controller.js','js/directives.js','js/services.js']
                     }
                 ]
 			}
@@ -65,8 +51,8 @@ module.exports = function(grunt){
       		}
     	},
 	    watch: {
-	      files: ['js/*.js'],
-	      tasks: ['uglify']
+	      files: ['js/*.js','css/*.css','images/*'],
+	      tasks: ['uglify','cssmin','imagemin']
 	    }
 	});
 	//加载插件
@@ -78,5 +64,5 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     //默认执行任务
-	grunt.registerTask("default",["uglify"]);
+	grunt.registerTask("default",["uglify",'imagemin']);
 };

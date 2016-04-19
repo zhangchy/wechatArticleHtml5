@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
     <title>微信文章</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="dest/css/style.css"/>
 </head>
 <body>
     <div id="header" class="header-wrapper">
@@ -14,9 +14,9 @@
         <header class="article-filter">
             <form id="search_form">
                 <div class="f-input-box">
-                    <a href=""><img class="f-img-sel" src="images/sort.png" alt=""/></a>
+                    <a href=""><img class="f-img-sel" src="dest/images/sort.png" alt=""/></a>
                     <input type="text" placeholder="请输入搜素关键字" id="searchKey"/>
-                    <a href="javascript:void(0)" id="searchA"><img class="f-img-search" src="images/search.png" alt=""/></a>
+                    <a href="javascript:void(0)" id="searchA"><img class="f-img-search" src="dest/images/search.png" alt=""/></a>
                 </div>
             </form>
         </header>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="body-wrapper" ng-controller="ArticlesController">
-        <div class="stick-div" id="stick"><img src="images/stick.png"/></div>
+        <div class="stick-div" id="stick"><img src="dest/images/stick.png"/></div>
         <article class="container" id="articles_list" ng-view="articles">
 
         </article>
@@ -46,7 +46,7 @@
 <script src="js/angularjs_1.5.3/angular-route.min.js"></script>
 <script src="js/jquery/jquery-1.7.1.min.js"></script>-->
 
-<script src="dest/index.min.js"></script>
+<script src="dest/js/index.min.js"></script>
 
 <!--<script src="dest/app.min.js"></script>
 <script src="dest/controller.min.js"></script>

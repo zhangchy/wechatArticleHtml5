@@ -133,7 +133,6 @@ header{
 .article-sort ul li:nth-child(1),.article-sort ul li:nth-child(2){
     border-right: 1px solid #eaeaea;
 }
-
 .click-sort-a{
     text-align: center;
     display: block;
@@ -304,8 +303,3 @@ article ul li a{
     width: 3rem;
     height: 3em;
 }
-
-
-
-
-
