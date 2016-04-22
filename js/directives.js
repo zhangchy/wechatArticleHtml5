@@ -21,7 +21,7 @@ wechatArticle.directive('pagination',['$compile',function($compile){
                             '</a>'+
                             '<div class="article-img-div">'+
                                 '<a href="{{item.href}}">'+
-                                    '<img class="article-img" src="images/link.jpg" alt=""/>'+
+                                    '<img class="article-img" src="dest/images/link.jpg" alt=""/>'+
                                 '</a>'+
                             '</div>'+
                             '<div class="article-title-div">'+
