@@ -97,6 +97,7 @@ function processRequestRoute(request, response) {
             }
         } else { //资源不存在
             if(databaseUrl){
+
                 var params = url.parse(request.url,true).query;
                 getDatabaseData(pathname,params,response);
             }else{

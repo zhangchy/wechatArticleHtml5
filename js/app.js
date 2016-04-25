@@ -6,6 +6,9 @@ wechatArticle.config(['$routeProvider',function ($routeProvider) {
     $routeProvider.when('/articles',{
         templateUrl:"../tpls/articles.html",
         controller:"ArticlesController"
+    }).when('/publicNums',{
+        templateUrl:"../tpls/publicNums.html",
+        controller:"PublicNumsController"
     }).otherwise({
         templateUrl:"../tpls/articles.html",
         controller:"ArticlesController"

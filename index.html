@@ -5,49 +5,63 @@
     <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
     <title>微信文章</title>
     <link rel="shortcut icon" href="http://a.fsdn.com/con/img/sftheme/favicon.ico">
-    <link rel="stylesheet" href="dest/css/style.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-    <div id="header" class="header-wrapper">
-        <div class="top-header">
-            微信文章
-        </div>
-        <header class="article-filter">
-            <form id="search_form">
-                <div class="f-input-box">
-                    <a href=""><img class="f-img-sel" src="dest/images/sort.png" alt=""/></a>
-                    <input type="text" placeholder="请输入搜素关键字" id="searchKey"/>
-                    <a href="javascript:void(0)" id="searchA"><img class="f-img-search" src="dest/images/search.png" alt=""/></a>
-                </div>
-            </form>
-        </header>
-        <div class="article-sort">
-            <ul>
-                <li>
-                    <a href="javascript:void(0)" id="readAmountSort" class="no-click-sort-a">阅读量<span><div id="sort_up_img" class="sort-up-gray"></div><div id="sort_down_img" class="sort-down-gray"></div></span></a>
-                </li><li>
-                    <a href="" id="publishSort"  class="no-click-sort-a">发布时间</a>
-                </li><li>
-                    <a href="" id="updateSort"  class="no-click-sort-a">最新更新</a>
-                </li>
-            </ul>
-        </div>
+<div id="header" class="header-wrapper">
+    <div class="top-header">
+        微信文章
     </div>
+    <header class="article-filter">
+        <form id="search_form">
+            <div class="f-input-box">
+                <a href="javascript:void(0)" id="search_type">
+                    <img class="f-img-sel" src="dest/images/sort.png" alt=""/>
+                    <div class="search_type_triangle"></div>
+                </a>
+                <input type="hidden" value="1" id="searchTypeValue"/>
+                <input type="text" placeholder="搜文章" id="searchKey"/>
+                <a href="javascript:void(0)" id="searchA"><img class="f-img-search" src="dest/images/search.png" alt=""/></a>
 
-    <div class="body-wrapper" ng-controller="ArticlesController">
-        <div class="stick-div" id="stick"><img src="dest/images/stick.png"/></div>
-        <article class="container" id="articles_list" ng-view="articles">
-
-        </article>
-        <pagination></pagination>
+            </div>
+        </form>
+    </header>
+    <div class="article-sort">
+        <ul>
+            <li>
+                <a href="javascript:void(0)" id="readAmountSort" class="no-click-sort-a">阅读量<span><div id="sort_up_img" class="sort-up-gray"></div><div id="sort_down_img" class="sort-down-gray"></div></span></a>
+            </li><li>
+            <a href="" id="publishSort"  class="no-click-sort-a">发布时间</a>
+        </li><li>
+            <a href="" id="updateSort"  class="no-click-sort-a">最新更新</a>
+        </li>
+        </ul>
     </div>
+</div>
 
+<div class="body-wrapper" ng-controller="ArticlesController">
+    <div class="stick-div" id="stick"><img src="dest/images/stick.png"/></div>
+    <article class="container" id="articles_list" ng-view="articles">
+
+    </article>
+    <ul class="container" id="publicNums_list">
+        <li ng-repeat="item in publicNums"  class="article-list-li">
+            aaaa
+        </li>
+    </ul>
+    <pagination></pagination>
+</div>
+<div id="search_type_select">
+    <a href="javascript:void(0)" id="search_article">搜文章</a>
+    <a href="javascript:void(0)" id="search_public_num">搜公众号</a>
+</div>
+<div ng-view="articles_sort"></div>
 </body>
-<!--<script src="js/angularjs_1.5.3/angular.min.js"></script>
+<script src="js/angularjs_1.5.3/angular.min.js"></script>
 <script src="js/angularjs_1.5.3/angular-route.min.js"></script>
-<script src="js/jquery/jquery-1.7.1.min.js"></script>-->
+<script src="js/jquery/jquery-1.7.1.min.js"></script>
 
-<script src="dest/js/index.min.js"></script>
+<!--<script src="dest/js/index.min.js"></script>-->
 
 <!--<script src="dest/app.min.js"></script>
 <script src="dest/controller.min.js"></script>
@@ -55,10 +69,10 @@
 <script src="dest/services.min.js"></script>-->
 <!--<script src="js/angularjs_1.5.3/angular-ui-router.js"></script>-->
 <!--<script src="./js/index.js"></script>-->
-<!--<script src="js/app.js"></script>
+<script src="js/app.js"></script>
 <script src="js/controller.js"></script>
 <script src="js/directives.js"></script>
-<script src="js/services.js"></script>-->
+<script src="js/services.js"></script>
 <!--<script src="js/filters.js"></script>
 <script src="js/services.js"></script>
 <script src="js/directives.js"></script>-->

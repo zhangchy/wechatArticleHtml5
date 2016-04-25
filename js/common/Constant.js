@@ -16,7 +16,7 @@ function getServerConfig(){
         "denyAccess":["./httpserver.js", "./src/requirecache.js"],
         "localIPs":["127.0.0.1"],
         "srcpath":"/src",
-        "databasePaths":["/articles"]
+        "databasePaths":["/articles","/publicNums"]
     };
 }
 exports.getServerConfig = getServerConfig;

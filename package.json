@@ -1,7 +1,7 @@
 {
   "name": "wechat_article",
   "version": "0.0.1",
-  "description": "wechat article show ",
+  "description": "wechat articles show ",
   "main": "index.js",
   "scripts": {
     "test": "echo Error: no test specified&& exit 1"
@@ -16,7 +16,7 @@
     "grunt-contrib-watch": "*"
   },
   "keywords": [
-    "article"
+    "articles"
   ],
   "author": "caihe",
   "license": "ISC"
