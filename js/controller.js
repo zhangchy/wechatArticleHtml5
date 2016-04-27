@@ -199,9 +199,11 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
         searchTypeTriangle.style.display="none";searchTypeSelect.style.display="none";
     };
     document.getElementById("search_public_num").onclick = function(){
-        $("#searchTypeValue").val(2);
+        $("#searchTypeValue").val(1);
         document.getElementById("searchKey").placeholder = "搜公众号";
         searchTypeTriangle.style.display="none";searchTypeSelect.style.display="none";
     };
+
+    searchTypeTriangle.style.display="none";searchTypeSelect.style.display="none";
 }]);
 
