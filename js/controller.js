@@ -203,7 +203,6 @@ wechatArticle.controller('ArticlesController', ['$scope','$http','ArticlesServic
         document.getElementById("searchKey").placeholder = "搜公众号";
         searchTypeTriangle.style.display="none";searchTypeSelect.style.display="none";
     };
-
     searchTypeTriangle.style.display="none";searchTypeSelect.style.display="none";
 }]);
 
